@@ -1,0 +1,10 @@
+build-essential
+cmake
+git
+libhdf5-dev
+libvtk9-dev
+libboost-all-dev
+libcgal-dev
+libtinyxml-dev
+python3-venv
+python3-pip

@@ -1,0 +1,105 @@
+{
+  "a_imag": [
+    -0.16032082556956284,
+    -0.3090903793065616,
+    0.09243064603421136,
+    NaN,
+    NaN,
+    NaN,
+    NaN
+  ],
+  "a_real": [
+    -0.5396620155771217,
+    0.9189106814965369,
+    0.460739156933597,
+    NaN,
+    NaN,
+    NaN,
+    NaN
+  ],
+  "b_imag": [
+    0.27476205715882396,
+    0.43916943757016047,
+    1.001772600690596,
+    NaN,
+    NaN,
+    NaN,
+    NaN
+  ],
+  "b_real": [
+    1.1588522986576502,
+    3.701798817704203,
+    0.8242174351586485,
+    NaN,
+    NaN,
+    NaN,
+    NaN
+  ],
+  "c_imag": [
+    -0.504729808835501,
+    0.19271560994490056,
+    0.46543122497228223,
+    NaN,
+    NaN,
+    NaN,
+    NaN
+  ],
+  "c_real": [
+    0.3014199137006353,
+    3.925921027533948,
+    0.5682293284556227,
+    NaN,
+    NaN,
+    NaN,
+    NaN
+  ],
+  "calibration_sigmas": [
+    3.3
+  ],
+  "calibration_standard_count": 3,
+  "calibration_standards": [
+    "open",
+    "short",
+    "match_sigma_3p3"
+  ],
+  "error_db_max": -240.0,
+  "error_db_rms": 240.0,
+  "error_mag_max": 1.903838269217419e-15,
+  "error_mag_rms": 7.060843098263773e-16,
+  "error_uncal_db_max": 6.947551473971992,
+  "error_uncal_db_rms": 4.5719931789017885,
+  "error_uncal_mag_max": 2.2252436669073066,
+  "error_uncal_mag_rms": 1.1361859108813224,
+  "f0_hz": 5000000000.0,
+  "fixture": "microstrip_msl",
+  "freq_hz": [
+    4000000000.0,
+    4333333333.333333,
+    4666666666.666667,
+    5000000000.0,
+    5333333333.333333,
+    5666666666.666666,
+    6000000000.0
+  ],
+  "metric": "thevenin",
+  "valid_count": 3,
+  "valid_mask": [
+    true,
+    true,
+    true,
+    false,
+    false,
+    false,
+    false
+  ],
+  "validation_error_db_max": -22.846971197668708,
+  "validation_error_db_rms": 28.717560761378866,
+  "validation_error_mag_max": 0.07205289585906843,
+  "validation_error_mag_rms": 0.04812667669529922,
+  "validation_error_uncal_db_max": 0.05415935961385169,
+  "validation_error_uncal_db_rms": 5.037214963131534,
+  "validation_error_uncal_mag_max": 1.0062548068214554,
+  "validation_error_uncal_mag_rms": 0.6766696742869087,
+  "validation_sigma": 6.7,
+  "validation_sigma_in_calibration": false
+}

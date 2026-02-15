@@ -1,0 +1,9 @@
+{
+  "slice_angle_deg": 30,
+  "outer_radius_mm": 80,
+  "inner_radius_mm": 20,
+  "keepout_edge_mm": 2,
+  "feed_location_mm": 24,
+  "min_trace_mm": 0.15,
+  "min_gap_mm": 0.15
+}

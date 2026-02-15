@@ -1,0 +1,14 @@
+[
+  {
+    "label": "lock",
+    "epochs": 1,
+    "lr": 0.05,
+    "w_fb": 0.0,
+    "w_match": 20.0,
+    "w_peak": 8.0,
+    "w_freq": 200.0,
+    "rl_target": 8.0,
+    "rl_peak_target": 10.0,
+    "beta": 2.0
+  }
+]

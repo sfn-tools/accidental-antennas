@@ -1,0 +1,27 @@
+{
+  "model": "dir24",
+  "params": {
+    "scale": 1.72,
+    "L_dir": 37.74,
+    "W_dir": 3.2,
+    "S_dir": 9.71,
+    "L_dr": 37.74,
+    "W_dr": 37.74,
+    "S_ref": 14.04,
+    "W_cps": 2.75,
+    "S_cps": 0.45,
+    "L_cps": 8.66,
+    "L_taper": 17.28,
+    "W_ref": 41.0,
+    "L_ref": 34.6,
+    "Lb1": 4.33,
+    "Lb2": 4.33,
+    "W_msl": 3.11
+  },
+  "substrate": {
+    "eps_r": 4.3,
+    "tan_delta": 0.02,
+    "thickness_mm": 1.6,
+    "copper_thickness_mm": 0.035
+  }
+}

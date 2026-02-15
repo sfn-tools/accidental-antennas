@@ -1,0 +1,8 @@
+fdtdx
+jax
+jaxlib
+numpy
+matplotlib
+optax
+pytreeclass
+loguru

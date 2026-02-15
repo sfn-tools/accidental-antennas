@@ -1,0 +1,804 @@
+{
+  "cpu_threshold": {
+    "early_stop": [
+      {
+        "min_epoch": 25,
+        "rl_key": "rl_min_db",
+        "rl_min_db": 2.0,
+        "threshold": 0.5
+      },
+      {
+        "min_epoch": 50,
+        "rl_key": "rl_min_db",
+        "rl_min_db": 3.5,
+        "threshold": 0.5
+      },
+      {
+        "min_epoch": 80,
+        "rl_key": "rl_min_db",
+        "rl_min_db": 5.0,
+        "threshold": 0.5
+      }
+    ],
+    "eval_on_done": true,
+    "interval": 5,
+    "params_resample": true,
+    "params_resample_method": "nearest",
+    "port_calibration": "calibration/port_calibration_microstrip_flux_msl.json",
+    "port_calibration_metric": "flux",
+    "quality": "medium",
+    "rl_mode": "flux",
+    "run_root": "runs_threshold_s15",
+    "stale_limit": 3,
+    "stop_after": 200,
+    "stop_below": -0.5,
+    "stop_density_after": 100,
+    "stop_density_max": 0.8,
+    "stop_density_min": 0.2,
+    "threshold": 0.5,
+    "thresholds": "0.3,0.5,0.7"
+  },
+  "defaults": {
+    "backend": "gpu",
+    "band_sample_prob": 0.7,
+    "density_max": 0.6,
+    "density_min": 0.2,
+    "design_dropout_prob": 0.05,
+    "device_eps": 20.0,
+    "device_non_pec": false,
+    "epsilon_random_prob": 0.1,
+    "epsilon_random_scale": 0.0,
+    "extra_args": [
+      "--rl-mode",
+      "flux",
+      "--logit-optim",
+      "--revert-loss-mult",
+      "4.0",
+      "--revert-patience",
+      "7"
+    ],
+    "final_eval": true,
+    "grad_checkpoints": 8,
+    "grad_method": "checkpointed",
+    "grad_noise_prob": 0.3,
+    "grad_noise_scale": 0.2,
+    "grad_stall_epochs": 5,
+    "grad_stall_threshold": 1e-08,
+    "init_blob_density": 0.5,
+    "init_blob_smooth_iters": 3,
+    "init_grid_connect_prob": 0.7,
+    "init_grid_size": 7,
+    "init_grid_thickness": 3,
+    "init_walk_branches": 8,
+    "init_walk_length_frac": 2.5,
+    "init_walk_thickness": 3,
+    "init_walk_turn_prob": 0.4,
+    "nan_grad_epochs": 3,
+    "nan_grad_mode": "random",
+    "nan_grad_threshold": 0.99,
+    "port_calibration": "calibration/port_calibration_microstrip_flux_msl.json",
+    "port_calibration_metric": "flux",
+    "quality": "medium",
+    "random_accept": "improve",
+    "random_binary": false,
+    "random_decay": 0.998,
+    "random_scale": 0.25,
+    "random_threshold": 0.5,
+    "raw_rl_floor_db": 1.0,
+    "save_every": 5,
+    "schedule": "manual",
+    "schedule_json": "opt/schedules/explore_balanced.json",
+    "search_mode": "grad",
+    "threshold_beta": 12,
+    "threshold_every": 10,
+    "threshold_stop_after": 200,
+    "threshold_stop_below": -0.5,
+    "thresholds": "0.3,0.5,0.7",
+    "w_density": 0.6,
+    "w_raw_rl_pen": 2.0
+  },
+  "hybrid": {
+    "allow_resample": true,
+    "binarize": true,
+    "blend_alpha": 0.6,
+    "enabled": true,
+    "fallback_topk": true,
+    "feed_frac": 0.4,
+    "hybrid_root": "hybrid_seeds",
+    "interval_done": 8,
+    "max_per_cycle": 6,
+    "max_total": 60,
+    "methods": [
+      "split_feed",
+      "blend",
+      "union"
+    ],
+    "min_fb_db": 6.0,
+    "min_rl_db": 2.0,
+    "queue_models_only": true,
+    "resample_method": "nearest",
+    "run_overrides": {
+      "init_mode": "random",
+      "random_binary": false,
+      "schedule_json": "opt/schedules/fast_explore_matchnet.json",
+      "search_mode": "grad",
+      "threshold_stop_after": 120,
+      "threshold_stop_below": 0.2
+    },
+    "seed_base": 30000,
+    "source_root": "runs_threshold_s15",
+    "threshold": 0.5
+  },
+  "openems": {
+    "allow_invalid_cpu_eval": true,
+    "archive": {
+      "max_rad_eff": 1.2,
+      "max_zin_imag": 10.0,
+      "max_zin_real": 100.0,
+      "min_bw_frac": 0.95,
+      "min_fb_db": 0.0,
+      "min_gain_db": 3.0,
+      "min_pacc_w": 0.001,
+      "min_rad_eff": 0.0,
+      "min_rl_db": 5.0,
+      "min_zin_real": 10.0,
+      "use_match3": true,
+      "use_matched_rl": true
+    },
+    "archive_interval": 900,
+    "archive_root": "passing_designs",
+    "auto_archive": true,
+    "enabled": true,
+    "hard_invalid_reasons": [
+      "pin_nonpositive",
+      "s11_gt_1p1",
+      "s11_nonfinite"
+    ],
+    "log_interval": 120,
+    "match3": true,
+    "match3_c_max_pf": 10.0,
+    "match3_c_min_pf": 0.2,
+    "match3_l_max_nh": 20.0,
+    "match3_l_min_nh": 0.5,
+    "match3_samples": 8,
+    "match_fdtdx_mesh": true,
+    "max_concurrent": 2,
+    "max_fill_frac": 0.9,
+    "min_bw_frac": 0.6,
+    "min_fill_frac": 0.1,
+    "min_rl_db": 5.0,
+    "mirror_fdtdx": true,
+    "no_clip_to_wedge": true,
+    "openems_root": "../antenna_opt/runs_fdtdx",
+    "overlap_mm": 0.5,
+    "port_mode": "fdtdx",
+    "port_type": "msl",
+    "prune": true,
+    "quality": "fast",
+    "scan_interval": 60,
+    "scan_max_per_loop": 6,
+    "scan_order": "newest",
+    "scan_roots": [
+      "runs_threshold_s15"
+    ],
+    "scan_runs": true,
+    "smooth_ratio": 1.4,
+    "snap_mm": 0.5,
+    "threshold": 0.5,
+    "use_match3": true,
+    "use_matched_rl": true,
+    "validation_interval": 10,
+    "validation_min_epoch": 5
+  },
+  "results_log": "campaign_results_s15.jsonl",
+  "runs": [
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24000
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24040
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24070
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24100
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24001
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24041
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24071
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24101
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24002
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24042
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24072
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24102
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24003
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24043
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24073
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24103
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24004
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24044
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24074
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24104
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24005
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24045
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24075
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24105
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24006
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24046
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24076
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24106
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24007
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24047
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24077
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24107
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24008
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24048
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24078
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24108
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24009
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24049
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24079
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24109
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24010
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24050
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24080
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24110
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24011
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24051
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24081
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24111
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24012
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24052
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24082
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24112
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24013
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24053
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24083
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24113
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24014
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24054
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24084
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24114
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24015
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24055
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24085
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24115
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24016
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24056
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24086
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24116
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24017
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24057
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24087
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24117
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24018
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24058
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24088
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24118
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24019
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24059
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24089
+    },
+    {
+      "init_mode": "uniform",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24119
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24020
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24060
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24090
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24021
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24061
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24091
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24022
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24062
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24092
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24023
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24063
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24093
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24024
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24064
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24094
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24025
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24065
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24095
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24026
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24066
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24096
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24027
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24067
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24097
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24028
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24068
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24098
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24029
+    },
+    {
+      "init_mode": "seed_blob",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24069
+    },
+    {
+      "init_mode": "stochastic_grid",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24099
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24030
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24031
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24032
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24033
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24034
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24035
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24036
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24037
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24038
+    },
+    {
+      "init_mode": "patch",
+      "model": "dir5_s15_longfeed_f16_s0",
+      "seed": 24039
+    }
+  ],
+  "scoring": {
+    "bw_frac_target": 0.95,
+    "direction_mode": "peak",
+    "min_zin_real": 5.0,
+    "phi_peak_penalty_weight": 0.0,
+    "raw_rl_penalty_db": 3.0,
+    "use_match_metrics": false
+  }
+}

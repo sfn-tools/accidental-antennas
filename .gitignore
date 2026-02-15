@@ -1,0 +1,70 @@
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.egg-info/
+build/
+dist/
+
+# Local virtual envs
+.venv/
+venv/
+
+# Logs/runtime state
+*.log
+nohup*.out
+
+# Local matplotlib cache
+.mplconfig/
+**/.mplconfig/
+
+# Local queue/state overrides
+antenna_fdtdx/campaign_queue.local.json
+antenna_fdtdx/campaign_state.json
+antenna_fdtdx/campaign_daemon.log
+antenna_fdtdx/nohup_*.out
+
+# Generated FDTDX artifacts
+antenna_fdtdx/runs/
+antenna_fdtdx/runs_*/
+antenna_fdtdx/opt_runs/
+antenna_fdtdx/runs_threshold/
+antenna_fdtdx/runs_threshold*/
+antenna_fdtdx/passing_designs/
+antenna_fdtdx/tmp/**
+antenna_fdtdx/reports/**
+!antenna_fdtdx/tmp/.gitkeep
+!antenna_fdtdx/reports/.gitkeep
+
+# Generated openEMS artifacts
+antenna_opt/runs/
+antenna_opt/runs_*/
+antenna_opt/runs_fdtdx/
+antenna_opt/runs_fdtdx_*/
+antenna_opt/tmp/**
+antenna_opt/reports/**
+antenna_opt/exports/**
+!antenna_opt/tmp/.gitkeep
+!antenna_opt/reports/.gitkeep
+!antenna_opt/exports/.gitkeep
+
+# Local development helpers
+pilot_eval/
+h5s/
+data/
+
+# Vendor build noise
+openEMS-Project/build_*.log
+openEMS-Project/**/__pycache__/
+fdtdx/**/__pycache__/
