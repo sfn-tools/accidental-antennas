@@ -4,6 +4,10 @@ Tool to brute-force PCB antenna designs using GPUs.
 
 This repository combines a fast GPU exploration path (FDTDX) with a higher-fidelity validation path (openEMS), then adds tooling to automate long multi-run campaigns.
 
+[The blog post accompanying this repo](https://something.fromnothing.blog/posts/accidental-antennas/)
+
+**Some heavy clean-up work was done for the repo before pushing it public. It was a mess. So if I accidentally broke something, please file an issue and I will take a look at it (read, put Codex and Claude Code to fix it)**
+
 ## What this project does
 
 - Generates candidate PCB antenna geometries on a 2D copper grid.
@@ -12,6 +16,18 @@ This repository combines a fast GPU exploration path (FDTDX) with a higher-fidel
 - Exports copper geometry for downstream PCB CAD workflows.
 
 In short: **search fast, validate carefully, then export**.
+
+## Some notes
+The code is highly experimental and a lot of things will still need to be tried. As of today, it is possible to use the current codebase to brute-force functional real world designs (read the blog post above for more details)
+
+Below is a very incomprehensive list of things that should be explored and tweaked:
+- Various initial geometries, trying all of the ones that currently exist and coming up with completely new ones, just random lines, squares, arcs etc..
+- Adding more points for the S11 measurements. 72 is not enough to have accurate predictions where the design will land
+- Trying out different feedline designs
+- Trying different weighting on the reward/penalty function that directs the gradient solver
+- Putting the manufactured designs into an EMC chamber to validate whether the openEMS VTK beam graphs and gain estimates match
+- Manufacturing just the feedlines then measuring them using VNA and using the S1P files from the VNA to provide real world ground truth calibration for the simulation feedlines
+- Collecting more data on manufactured designs to push the real-world/simulation results closer
 
 ## High-level architecture
 
@@ -71,6 +87,7 @@ Per-run artifacts usually include:
 - `summary.txt`
 - frequency responses (`s11.csv`, plots)
 - geometry payload (`geometry.npz` on FDTDX side)
+- h5 file with geometries and metric per epoch
 
 ## Documentation map
 
